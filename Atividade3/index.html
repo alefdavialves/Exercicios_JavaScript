@@ -19,13 +19,22 @@
     <label for="campo">Digite algo</label>
     <input type="text" name="campo" id="campo">
     
-    <p>Contador de caracteres:</p>
+    <p>Contador de caracteres: <span id="caracteres"></span></p>
     <div id="espaco"></div>
-
-
 
     <hr>
     <h2>Adicionar novo item:</h2>
+
+    <label for="newItem">Escolha uma opção:</label>
+    <select name="newItem" id="newItem">
+        <option value="ol">Lista Ordenada</option>
+        <option value="ul">Lista Não Ordenada</option>
+        <option value="h1">h1</option>
+    </select>
+    <button id="addItem">Adicionar Item</button>
+
+    <div id="newItensBox"></div>
+
     <hr>
     <button type="reset">Reset</button>
     

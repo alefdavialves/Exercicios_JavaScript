@@ -26,11 +26,43 @@ let espaco = document.getElementById("espaco");
 
 campo.onkeydown = (e) => {
   if (e.key == "Enter") {
-
-    e.preventDefault()
+    e.preventDefault();
     let paragrafo = document.createElement("p");
     espaco.appendChild(paragrafo);
     paragrafo.textContent = campo.value;
-    campo.value = ""
+    campo.value = "";
+    contCaracter.textContent = 0;
   }
+};
+
+//Contador de caracteres
+
+let contCaracter = document.getElementById("caracteres");
+
+campo.addEventListener("input", () => {
+  let numeroCaracteres = campo.value.length;
+
+  contCaracter.textContent = numeroCaracteres;
+});
+
+//Adicionar novo item
+
+let itemOpt = document.getElementById("newItem");
+let buttonItem = document.getElementById("addItem");
+let campoNovosItens = document.getElementById("newItensBox");
+
+buttonItem.onclick = function () {
+  let newItemName = itemOpt.value;
+  let newItem = document.createElement(newItemName);
+
+  if (newItemName === "ul" || newItemName === "ol") {
+    for (let i = 1; i <= 3; i++) {
+      let li = document.createElement("li");
+      li.textContent = `Item ${i}`;
+      newItem.appendChild(li);
+    }
+  } else {
+    newItem.textContent = "Novo conteúdo";
+  }
+    campoNovosItens.appendChild(newItem);
 };
