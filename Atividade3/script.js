@@ -66,3 +66,23 @@ buttonItem.onclick = function () {
   }
     campoNovosItens.appendChild(newItem);
 };
+
+//Reset
+
+const btnReset = document.getElementById ('reset');
+
+
+btnReset.onclick = function () {
+  contador = 0;
+  result.textContent = "0";
+
+  espaco.innerHTML = "";
+
+  campo.value = "";
+
+  contCaracter.textContent = "0";
+
+  campoNovosItens.innerHTML = "";
+
+  itemOpt.value = "";
+};
