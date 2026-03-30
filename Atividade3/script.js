@@ -74,13 +74,13 @@ const btnReset = document.getElementById ('reset');
 
 btnReset.onclick = function () {
   contador = 0;
-  result.textContent = "0";
+  result.textContent = "";
 
   espaco.innerHTML = "";
 
   campo.value = "";
 
-  contCaracter.textContent = "0";
+  contCaracter.textContent = "";
 
   campoNovosItens.innerHTML = "";
 
