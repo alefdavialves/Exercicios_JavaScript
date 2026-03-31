@@ -6,7 +6,7 @@ const precoGasolina = 6.68;
 const precoEtanol = 5.89;
 const precoDisel = 6.20;
 
-function atualizarValor() {
+const atualizarValor = () => {
 
     let tipo = document.getElementById('tipo').value;
     let litros = parseFloat(document.getElementById('litros').value);
@@ -27,7 +27,7 @@ function atualizarValor() {
             break;
 
         default:
-            console.log ("Esolha uma função")
+            alert ("Esolha uma função");
             return;
 
     }
@@ -40,7 +40,7 @@ let tipo = document.getElementById('tipo');
 
 tipo.addEventListener ('change', atualizarValor);
 
-function calcularAbastecimento (precoCombustivel, litros) {
+ const calcularAbastecimento = (precoCombustivel, litros)  => {
 
     let valorTotal = precoCombustivel * litros;
 
@@ -50,4 +50,6 @@ function calcularAbastecimento (precoCombustivel, litros) {
 
 let litros = document.getElementById('litros');
 litros.addEventListener ("input", atualizarValor);
+
+
 
