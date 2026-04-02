@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -24,6 +25,7 @@
         <label for="tipo">Tipo de Combustivel</label>
 
         <select name="tipo" id="tipo">
+            <option value="" selected disabled>Escolha: </option>
             <option value="gasolina">Gasolina</option>
             <option value="etanol">Etanol</option>
             <option value="disel">Disel</option>
@@ -34,6 +36,7 @@
         <label for="litros">Informe a quantidade de litros</label>
         <input type="number" name="litros" id="litros" step="0.1" min="0">
 
+        
     </form>
 
         <h2>Resultado</h2>

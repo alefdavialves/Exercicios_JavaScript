@@ -4,52 +4,79 @@
 
 const precoGasolina = 6.68;
 const precoEtanol = 5.89;
-const precoDisel = 6.20;
+const precoDisel = 6.2;
 
 const atualizarValor = () => {
+  let tipo = document.getElementById("tipo").value;
+  let litros = Number(document.getElementById("litros").value);
+  let precoPorLitro;
 
-    let tipo = document.getElementById('tipo').value;
-    let litros = parseFloat(document.getElementById('litros').value);
-    let precoPorLitro;
+  switch (tipo) {
+    case "gasolina":
+      precoPorLitro = precoGasolina;
+      break;
 
-    switch (tipo) {
+    case "etanol":
+      precoPorLitro = precoEtanol;
+      break;
 
-        case "gasolina":
-            precoPorLitro = precoGasolina;
-            break;
+    case "disel":
+      precoPorLitro = precoDisel;
+      break;
 
-        case "etanol":
-            precoPorLitro = precoEtanol;
-            break;
+    default:
+      alert("Esolha um tipo de combustível");
+      return;
+  }
 
-        case "disel":
-            precoPorLitro = precoDisel;
-            break;
+  if (!tipo || !litros) {
+    document.getElementById("resultado").textContent = "R$ 0,00";
+    return;
+  }
 
-        default:
-            alert ("Esolha uma função");
-            return;
+  calcularAbastecimento(precoPorLitro, litros);
+};
 
-    }
+let tipo = document.getElementById("tipo");
 
-    calcularAbastecimento(precoPorLitro, litros);
+tipo.addEventListener("change", atualizarValor);
 
-}
+const calcularAbastecimento = (precoCombustivel, litros) => {
+  if (litros <= 0 || Number.isNaN(litros)) {
+    alert("Digite um valor válido maior que zero");
+    litros = 0;
+  }
 
-let tipo = document.getElementById('tipo');
+  if (litros > 250) {
+    alert("Que carro é esse? kkkkkkkkkk");
+    litros = 0;
+  }
+  let valorTotal = precoCombustivel * litros;
 
-tipo.addEventListener ('change', atualizarValor);
+  document.getElementById("resultado").textContent = formatarMoeda(valorTotal);
+};
 
- const calcularAbastecimento = (precoCombustivel, litros)  => {
+const formatarMoeda = (valor) => {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+};
 
-    let valorTotal = precoCombustivel * litros;
+let litros = document.getElementById("litros");
+litros.addEventListener("input", atualizarValor);
 
-    document.getElementById ("resultado").textContent = valorTotal.toFixed(2)
+let form = document.querySelector("form");
 
-}
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
-let litros = document.getElementById('litros');
-litros.addEventListener ("input", atualizarValor);
+litros.addEventListener("keydown", (e) => {
+  const teclasInvalidas = ["e", "E", "+", "-"];
 
-
-
+  if (teclasInvalidas.includes(e.key)) {
+    e.preventDefault();
+    alert("Digite um valor válido");
+  }
+});
